@@ -1,4 +1,4 @@
-package com.sidpug.siddharth_pugalia.ui.slideshow;
+package com.sidpug.siddharth_pugalia.ui.history;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.sidpug.siddharth_pugalia.R;
-import com.sidpug.siddharth_pugalia.databinding.FragmentSlideshowBinding;
+import com.sidpug.siddharth_pugalia.databinding.FragmentHistoryBinding;
 
-public class SlideshowFragment extends Fragment {
+public class HistoryFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
-    private FragmentSlideshowBinding binding;
+    private HistoryViewModel historyViewModel;
+    private FragmentHistoryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        historyViewModel =
+                new ViewModelProvider(this).get(HistoryViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+        binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textHome;
+        historyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

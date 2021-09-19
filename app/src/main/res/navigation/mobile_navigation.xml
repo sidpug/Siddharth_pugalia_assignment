@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_map">
 
     <fragment
         android:id="@+id/nav_map"
@@ -11,20 +11,20 @@
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_maps" />
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.sidpug.siddharth_pugalia.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_history"
+        android:name="com.sidpug.siddharth_pugalia.ui.history.HistoryFragment"
+        android:label="@string/menu_history"
+        tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.sidpug.siddharth_pugalia.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_settings"
+        android:name="com.sidpug.siddharth_pugalia.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="root_preferences" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.sidpug.siddharth_pugalia.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_about"
+        android:name="com.sidpug.siddharth_pugalia.ui.about.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>
