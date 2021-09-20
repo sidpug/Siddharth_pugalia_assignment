@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sidpug.siddharth_pugalia.Adapter.DataListAdapter;
@@ -32,7 +32,6 @@ public class HistoryFragment extends Fragment {
 
     private DataHelper db_helper;
 
-    private HistoryViewModel historyViewModel;
     private FragmentHistoryBinding binding;
 
     TextView emptyList;
@@ -43,24 +42,21 @@ public class HistoryFragment extends Fragment {
 
         emptyList = emptyList.findViewById(R.id.empty_text);
 
-        historyViewModel =
-                new ViewModelProvider(this).get(HistoryViewModel.class);
-
-
-
         dataArrayList = new ArrayList<>();
 
-        //db_helper = new DataHelper();
+        db_helper = new DataHelper(getActivity());
+
+        displayDatabaseInfo();
 
         binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         recyclerView = recyclerView.findViewById(R.id.db_data);
         recyclerView.setHasFixedSize(true);
 
-//        layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
 
-        myAdapter = new DataListAdapter(this, dataArrayList);
+        myAdapter = new DataListAdapter(getActivity(), dataArrayList);
         recyclerView.setAdapter(myAdapter);
 
         return root;
