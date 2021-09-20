@@ -2,11 +2,11 @@ package com.sidpug.siddharth_pugalia.data;
 
 public class data_model {
     private String time;
-    private Long lat,lon;
+    private int lat,lon;
     private int temp;
     private String weather;
 
-    public data_model(String time, Long lat, Long lon, int temp, String weather) {
+    public data_model(String time, int lat, int lon, int temp, String weather) {
         this.time = time;
         this.lat = lat;
         this.lon = lon;
@@ -23,19 +23,19 @@ public class data_model {
         this.time = time;
     }
 
-    public Long getLat() {
+    public int getLat() {
         return lat;
     }
 
-    public void setLat(Long lat) {
+    public void setLat(int lat) {
         this.lat = lat;
     }
 
-    public Long getLon() {
+    public int getLon() {
         return lon;
     }
 
-    public void setLon(Long lon) {
+    public void setLon(int lon) {
         this.lon = lon;
     }
 

@@ -32,5 +32,12 @@
     <string name="weather_key">99fc17cddbc67c7c5d3e673a8b2523b0n</string>
     <string name="to_pin_current_location">to pin current location</string>
     <string name="Save_loc_to_db">Save Locations To Database</string>
+    <string name="no_history">No History</string>
+    <string name="checked_in">Checked in</string>
+    <string name="date">Date</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="temperature">Temperature</string>
+    <string name="weather">Weather</string>
 
 </resources>
