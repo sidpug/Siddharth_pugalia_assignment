@@ -12,8 +12,6 @@ import com.sidpug.siddharth_pugalia.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    private ListPreference mListPreference;
-
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -22,7 +20,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mListPreference = (ListPreference)  getPreferenceManager().findPreference("preference_key");
+        ListPreference mListPreference = (ListPreference) getPreferenceManager().findPreference("preference_key");
         assert mListPreference != null;
         mListPreference.setOnPreferenceChangeListener((preference, newValue) -> {
             // your code here
