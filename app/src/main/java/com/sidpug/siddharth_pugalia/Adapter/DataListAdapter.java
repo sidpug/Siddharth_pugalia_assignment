@@ -65,6 +65,8 @@ public class DataListAdapter extends RecyclerView.Adapter<DataListAdapter.ViewHo
     public int getItemCount() {
         return dataArrayList.size();
     }
+
+
 }
 
 

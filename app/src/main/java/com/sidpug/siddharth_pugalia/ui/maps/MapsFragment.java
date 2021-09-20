@@ -10,18 +10,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
+import com.sidpug.siddharth_pugalia.DB.DataHelper;
 import com.sidpug.siddharth_pugalia.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class MapsFragment extends Fragment  {
 
-    Snackbar mySnackbar;
+    Snackbar mySandbar;
+
+    String date_and_time;
+
+    private DataHelper db_helper;
+
 
 
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
@@ -37,9 +45,6 @@ public class MapsFragment extends Fragment  {
          */
         @Override
         public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
             googleMap.setOnMapClickListener(latLng -> {
                 Log.e("clicked on map",""+ latLng.toString());
                 googleMap.addMarker(new MarkerOptions().position(latLng).title("Mera area")
@@ -55,6 +60,11 @@ public class MapsFragment extends Fragment  {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
+
+        date_and_time = simpleDateFormat.format(calendar.getTime());
+
 
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }
@@ -66,11 +76,23 @@ public class MapsFragment extends Fragment  {
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
-        mySnackbar = Snackbar.make(view, R.string.app_name, Snackbar.LENGTH_LONG);
+        mySandbar = Snackbar.make(view, R.string.app_name, Snackbar.LENGTH_LONG);
         }
     }
 
     void get_weather(LatLng latLng) {
+        db_helper = new DataHelper(getActivity());
+        String str = "lat/lng: (-20.78946169529182,140.25976561009887)".replaceAll("[lat/ng: ()]","");
+        String[] arrOfStr = str.split(",", 2);
+
+        String lat = arrOfStr[0];
+        String lon = arrOfStr[1];
         //call api here
+
+        String weather = "clear sky",temp = "41 Degree C";
+        new DataHelper(getActivity()).insertTransferData(date_and_time,lat,lon,temp,weather);
+
     }
+
+
 }

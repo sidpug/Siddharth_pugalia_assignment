@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class HistoryFragment extends Fragment {
 
     RecyclerView recyclerView;
-    RecyclerView.Adapter myAdapter;
+    RecyclerView.Adapter<DataListAdapter.ViewHolder> myAdapter;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<data_model> dataArrayList;
 
@@ -36,13 +36,17 @@ public class HistoryFragment extends Fragment {
 
     TextView emptyList;
 
+    {
+
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        emptyList = emptyList.findViewById(R.id.empty_text);
-
         dataArrayList = new ArrayList<>();
+
+        emptyList = requireActivity().findViewById(R.id.empty_text);
 
         db_helper = new DataHelper(getActivity());
 
@@ -53,8 +57,7 @@ public class HistoryFragment extends Fragment {
         recyclerView = recyclerView.findViewById(R.id.db_data);
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         myAdapter = new DataListAdapter(getActivity(), dataArrayList);
         recyclerView.setAdapter(myAdapter);

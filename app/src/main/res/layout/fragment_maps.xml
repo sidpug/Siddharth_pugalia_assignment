@@ -9,19 +9,4 @@
     tools:context=".ui.maps.MapsFragment"
     tools:layout="@layout/fragment_maps">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/ic_baseline_my_location_24"
-        android:contentDescription="@string/to_pin_current_location" />
-
-    </androidx.fragment.app.FragmentContainerView>
-
 </androidx.fragment.app.FragmentContainerView>
