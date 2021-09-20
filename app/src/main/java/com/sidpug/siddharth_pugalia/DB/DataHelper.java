@@ -53,5 +53,10 @@ public class DataHelper extends SQLiteOpenHelper {
         Long result = db.insert(DataEntry.TABLE_NAME, null, contentValues);
 
     }
+
+    public void deleteAllRecords(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + DataEntry.TABLE_NAME);
+    }
 }
 
