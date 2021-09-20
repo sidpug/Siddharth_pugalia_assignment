@@ -40,24 +40,26 @@ public class HistoryFragment extends Fragment {
 
     }
 
-
+@Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+       // binding = FragmentHistoryBinding.inflate(inflater,)
+        binding = FragmentHistoryBinding.inflate(inflater, container, false);
 
         dataArrayList = new ArrayList<>();
 
-        emptyList = requireActivity().findViewById(R.id.empty_text);
+        emptyList = binding.emptyText;
 
         db_helper = new DataHelper(getActivity());
 
         displayDatabaseInfo();
 
-        binding = FragmentHistoryBinding.inflate(inflater, container, false);
+        //binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        recyclerView = recyclerView.findViewById(R.id.db_data);
+        recyclerView = binding.dbData;
         recyclerView.setHasFixedSize(true);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         myAdapter = new DataListAdapter(getActivity(), dataArrayList);
         recyclerView.setAdapter(myAdapter);
