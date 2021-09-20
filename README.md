@@ -8,9 +8,10 @@
 * Clone this repo locally and open it in **Android Studio**.
 * Follow the instructions ![here](https://developers.google.com/maps/documentation/android-sdk/overview) to get the API key for Maps SDK to work.
 * Copy the API Key to root level local.propoerties file as shown:
+
 ![image](https://user-images.githubusercontent.com/27898749/134044034-2617a6b2-38ca-4170-8934-22b24c485803.png)
 
-  ![](https://user-images.githubusercontent.com/63469151/133932530-a939fb52-851e-46a4-8050-70695826664a.jpg)
+  ![image](https://user-images.githubusercontent.com/27898749/134044167-a22d881e-7f71-4242-8dfc-61bc723ed593.png)
 
 * Keep the name as **MAPS_API_KEY** only.
 * The app is now ready to build.
