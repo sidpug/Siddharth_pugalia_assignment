@@ -37,5 +37,6 @@
     <string name="app_version">Beta-1.0</string>
     <string name="about_label"><b>About</b></string>
     <string name="about">This app will fetch the weather at your current location when you press the Floating Action Button (FAB). Your location is plotted on to a map. Clicking on the marker will display the time that you checked in at that location and the weather at the time of check in. This information is presented to you in the form of a Snackbar at the bottom of the screen.</string>
+    <string name="delete">Delete</string>
 
 </resources>
