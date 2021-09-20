@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Projects/Siddharth_pugalia/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Projects/Siddharth_pugalia/app/src/main/res/layout/content_main.xml" value="0.22" />
+        <entry key="..\:/Projects/Siddharth_pugalia/app/src/main/res/layout/fragment_about.xml" value="0.20416666666666666" />
         <entry key="..\:/Projects/Siddharth_pugalia/app/src/main/res/layout/fragment_history.xml" value="0.12771739130434784" />
         <entry key="..\:/Projects/Siddharth_pugalia/app/src/main/res/layout/fragment_maps.xml" value="0.1" />
         <entry key="..\:/Projects/Siddharth_pugalia/app/src/main/res/layout/nav_header_main.xml" value="0.18432971014492755" />

@@ -1,13 +1,14 @@
 package com.sidpug.siddharth_pugalia.ui.maps;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,7 +18,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sidpug.siddharth_pugalia.R;
 
-public class MapsFragment extends Fragment {
+public class MapsFragment extends Fragment  {
 
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -35,6 +36,14 @@ public class MapsFragment extends Fragment {
             LatLng sydney = new LatLng(-34, 151);
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                @Override
+                public void onMapClick(@NonNull LatLng latLng) {
+                    Log.e("clicked on map",""+ latLng.toString());
+                    googleMap.addMarker(new MarkerOptions().position(latLng).title("Mera area")
+                            .snippet("Mai yahan ka raja hoon!"));
+                }
+            });
         }
     };
 
@@ -54,5 +63,16 @@ public class MapsFragment extends Fragment {
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
+    }
+
+//    @Override
+//    public void onMapReady(GoogleMap googleMap) {
+//        googleMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(0, 0))
+//                .title("Marker"));
+//    }
+
+    void get_weather() {
+
     }
 }

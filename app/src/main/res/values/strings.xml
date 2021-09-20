@@ -2,7 +2,7 @@
     <string name="app_name">Siddharth_pugalia</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">WeathrTrackr</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -28,5 +28,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="map_header">Map Settings</string>
+
+    <string name="weather_key">99fc17cddbc67c7c5d3e673a8b2523b0n</string>
 
 </resources>
