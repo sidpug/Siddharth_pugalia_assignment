@@ -1,40 +1,33 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory app:title="@string/map_header">
-
-
-
-    </PreferenceCategory>
-
-    <PreferenceCategory app:title="@string/messages_header">
-
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            app:key="Locked Marker Color"
+            app:title="Locked Marker Color"
+            app:summary="Current Color: Red"
+            app:icon="@drawable/ic_baseline_lock_24"/>
 
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
+            app:key="Unlocked Marker Color"
+            app:title="Unlocked Marker Color"
+            app:summary="Current Color: Azure"
+            app:icon="@drawable/ic_baseline_lock_open_24"/>
+
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/sync_header">
+    <PreferenceCategory app:title="Locations Database">
 
         <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+            app:key="save"
+            app:title="@string/Save_loc_to_db"
+            app:icon="@drawable/ic_baseline_save_24"/>
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
+        <Preference
+            app:dependency="save"
+            app:key="database"
+            app:title="Delete Database"
+            app:icon="@drawable/ic_baseline_delete_forever_24"/>
 
     </PreferenceCategory>
 

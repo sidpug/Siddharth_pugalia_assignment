@@ -16,9 +16,13 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.snackbar.Snackbar;
 import com.sidpug.siddharth_pugalia.R;
 
 public class MapsFragment extends Fragment  {
+
+    Snackbar mySnackbar;
+
 
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -36,13 +40,12 @@ public class MapsFragment extends Fragment  {
             LatLng sydney = new LatLng(-34, 151);
             googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                @Override
-                public void onMapClick(@NonNull LatLng latLng) {
-                    Log.e("clicked on map",""+ latLng.toString());
-                    googleMap.addMarker(new MarkerOptions().position(latLng).title("Mera area")
-                            .snippet("Mai yahan ka raja hoon!"));
-                }
+            googleMap.setOnMapClickListener(latLng -> {
+                Log.e("clicked on map",""+ latLng.toString());
+                googleMap.addMarker(new MarkerOptions().position(latLng).title("Mera area")
+                        .snippet("Mai yahan ka raja hoon!"));
+                get_weather(latLng);
+
             });
         }
     };
@@ -52,6 +55,7 @@ public class MapsFragment extends Fragment  {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }
 
@@ -62,17 +66,11 @@ public class MapsFragment extends Fragment  {
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
+        mySnackbar = Snackbar.make(view, R.string.app_name, Snackbar.LENGTH_LONG);
         }
     }
 
-//    @Override
-//    public void onMapReady(GoogleMap googleMap) {
-//        googleMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(0, 0))
-//                .title("Marker"));
-//    }
-
-    void get_weather() {
-
+    void get_weather(LatLng latLng) {
+        //call api here
     }
 }

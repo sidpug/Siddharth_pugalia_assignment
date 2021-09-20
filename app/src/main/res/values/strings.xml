@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">WeathrTrackr</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -30,5 +30,7 @@
     <string name="map_header">Map Settings</string>
 
     <string name="weather_key">99fc17cddbc67c7c5d3e673a8b2523b0n</string>
+    <string name="to_pin_current_location">to pin current location</string>
+    <string name="Save_loc_to_db">Save Locations To Database</string>
 
 </resources>

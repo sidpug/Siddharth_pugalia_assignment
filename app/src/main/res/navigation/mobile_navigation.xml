@@ -14,17 +14,29 @@
         android:id="@+id/nav_history"
         android:name="com.sidpug.siddharth_pugalia.ui.history.HistoryFragment"
         android:label="@string/menu_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_nav_history_to_nav_map"
+            app:destination="@id/nav_map" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.sidpug.siddharth_pugalia.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="root_preferences" />
+        tools:layout="root_preferences" >
+        <action
+            android:id="@+id/action_nav_settings_to_nav_map"
+            app:destination="@id/nav_map" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_about"
         android:name="com.sidpug.siddharth_pugalia.ui.about.AboutFragment"
         android:label="@string/menu_about"
-        tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_nav_about_to_nav_map"
+            app:destination="@id/nav_map" />
+    </fragment>
 </navigation>
