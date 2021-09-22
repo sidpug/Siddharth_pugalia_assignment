@@ -21,6 +21,8 @@ import com.sidpug.siddharth_pugalia.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
+
 
 public class MapsFragment extends Fragment  {
 
@@ -29,8 +31,6 @@ public class MapsFragment extends Fragment  {
     String date_and_time;
 
     private DataHelper db_helper;
-
-
 
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -46,10 +46,10 @@ public class MapsFragment extends Fragment  {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             googleMap.setOnMapClickListener(latLng -> {
-                Log.e("clicked on map",""+ latLng.toString());
+                Log.e("clicked on map", "" + latLng.toString());
                 googleMap.addMarker(new MarkerOptions().position(latLng).title("Mera area")
                         .snippet("Mai yahan ka raja hoon!"));
-                get_weather(latLng);
+                                    get_weather(latLng);
 
             });
         }
@@ -61,10 +61,8 @@ public class MapsFragment extends Fragment  {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
 
-        date_and_time = simpleDateFormat.format(calendar.getTime());
-
+        date_and_time = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a", Locale.getDefault()).format(calendar.getTime());
 
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }
@@ -72,23 +70,35 @@ public class MapsFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.curr_loc_fab).setOnClickListener(view1 -> {
+//            if(PackageManager.PERMISSION_GRANTED){
+//                ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION
+//                );
+//            }
+        });
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
-        mySandbar = Snackbar.make(view, R.string.app_name, Snackbar.LENGTH_LONG);
+            mySandbar = Snackbar.make(view, R.string.app_name, Snackbar.LENGTH_LONG);
         }
     }
 
-    void get_weather(LatLng latLng) {
-        db_helper = new DataHelper(getActivity());
-        String str = "lat/lng: (-20.78946169529182,140.25976561009887)".replaceAll("[lat/ng: ()]","");
-        String[] arrOfStr = str.split(",", 2);
 
+
+    void get_weather(LatLng latLng){
+
+        db_helper = new DataHelper(getActivity());
+        String s = latLng.toString().replaceAll("[lat/ng: ()]","");
+        //String str = "lat/lng: (-20.78946169529182,140.25976561009887)".replaceAll("[lat/ng: ()]","");
+        String[] arrOfStr = s.split(",", 2);
+        //lat long separated
         String lat = arrOfStr[0];
         String lon = arrOfStr[1];
-        //call api here
 
+        //String url = "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=2a022ff242c16a1142fd0094e90cab63";
+
+        // enter weather and temp
         String weather = "clear sky",temp = "41 Degree C";
         new DataHelper(getActivity()).insertTransferData(date_and_time,lat,lon,temp,weather);
 

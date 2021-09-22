@@ -1,12 +1,16 @@
 package com.sidpug.siddharth_pugalia.data;
 
 public class data_model {
+
+
+    private String id;
     private String time;
     private int lat,lon;
     private int temp;
     private String weather;
 
-    public data_model(String time, int lat, int lon, int temp, String weather) {
+    public data_model(String id,String time, int lat, int lon, int temp, String weather) {
+        this.id = id;
         this.time = time;
         this.lat = lat;
         this.lon = lon;
@@ -14,6 +18,13 @@ public class data_model {
         this.weather = weather;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTime() {
         return time;

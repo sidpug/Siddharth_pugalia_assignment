@@ -10,7 +10,6 @@ public class DataContract {
         public final static String TABLE_NAME = "Data_Table";
 
         /**Table Fields*/
-        public final static String _ID = BaseColumns._ID;
         public final static String COLUMN_TIME = "time";
         public final static String COLUMN_LAT  = "LAT";
         public final static String COLUMN_LON  = "LON";

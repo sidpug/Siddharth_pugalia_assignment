@@ -3,6 +3,7 @@ package com.sidpug.siddharth_pugalia.ui.history;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.BaseColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sidpug.siddharth_pugalia.Adapter.DataListAdapter;
 import com.sidpug.siddharth_pugalia.DB.DataContract.DataEntry;
 import com.sidpug.siddharth_pugalia.DB.DataHelper;
-import com.sidpug.siddharth_pugalia.R;
 import com.sidpug.siddharth_pugalia.data.data_model;
 import com.sidpug.siddharth_pugalia.databinding.FragmentHistoryBinding;
 
@@ -27,7 +27,7 @@ public class HistoryFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter<DataListAdapter.ViewHolder> myAdapter;
-    RecyclerView.LayoutManager layoutManager;
+    //RecyclerView.LayoutManager layoutManager;
     ArrayList<data_model> dataArrayList;
 
     private DataHelper db_helper;
@@ -36,9 +36,6 @@ public class HistoryFragment extends Fragment {
 
     TextView emptyList;
 
-    {
-
-    }
 
 @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,7 +45,7 @@ public class HistoryFragment extends Fragment {
 
         dataArrayList = new ArrayList<>();
 
-        emptyList = binding.emptyText;
+        //emptyList = binding.emptyText;
 
         db_helper = new DataHelper(getActivity());
 
@@ -59,7 +56,7 @@ public class HistoryFragment extends Fragment {
         recyclerView = binding.dbData;
         recyclerView.setHasFixedSize(true);
 
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         myAdapter = new DataListAdapter(getActivity(), dataArrayList);
         recyclerView.setAdapter(myAdapter);
@@ -101,6 +98,7 @@ public class HistoryFragment extends Fragment {
                 null,                         // Don't filter by row groups
                 null)) {
             // Figure out the index of each column
+            int index = cursor.getColumnIndex(BaseColumns._ID);
             int timeIndex = cursor.getColumnIndex(DataEntry.COLUMN_TIME);
             int latIndex = cursor.getColumnIndex(DataEntry.COLUMN_LAT);
             int lonIndex = cursor.getColumnIndex(DataEntry.COLUMN_LON);
@@ -113,6 +111,7 @@ public class HistoryFragment extends Fragment {
             while (cursor.moveToNext()) {
                 // Use that index to extract the String or Int value of the word
                 // at the current row the cursor is on.
+                String id =cursor.getString(index);
                 String time = cursor.getString(timeIndex);
                 int lat = cursor.getInt(latIndex);
                 int lon = cursor.getInt(lonIndex);
@@ -123,7 +122,7 @@ public class HistoryFragment extends Fragment {
                 //Log.d("TAG", "displayDataBaseInfo()4");
 
                 // Display the values from each column of the current row in the cursor in the TextView
-                dataArrayList.add(new data_model(time, lat, lon, Temp, weather));
+                dataArrayList.add(new data_model(id,time, lat, lon, Temp, weather));
             }
         }
         // Always close the cursor when you're done reading from it. This releases all its

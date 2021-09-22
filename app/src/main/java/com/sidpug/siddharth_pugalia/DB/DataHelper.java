@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+
 import androidx.annotation.Nullable;
 import com.sidpug.siddharth_pugalia.DB.DataContract.DataEntry;
 
@@ -21,7 +23,8 @@ public class DataHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String SQL_CREATE_TRANSACTION_TABLE =  "CREATE TABLE " + DataEntry.TABLE_NAME + " ("
+        String SQL_CREATE_DATA_TABLE =  "CREATE TABLE " + DataEntry.TABLE_NAME + " ("
+                + BaseColumns._ID +"INTEGER PRIMARY KEY ,"
                 + DataEntry.COLUMN_TIME + " VARCHAR, "
                 + DataEntry.COLUMN_LAT + " VARCHAR, "
                 + DataEntry.COLUMN_LON + " INTEGER, "
@@ -29,7 +32,7 @@ public class DataHelper extends SQLiteOpenHelper {
                 + DataEntry.COLUMN_TEMP + " INTEGER);";
 
         // Execute the SQL statement
-        db.execSQL(SQL_CREATE_TRANSACTION_TABLE);
+        db.execSQL(SQL_CREATE_DATA_TABLE);
     }
 
     @Override

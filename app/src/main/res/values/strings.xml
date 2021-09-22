@@ -20,7 +20,7 @@
 
     <string name="map_header">Map Settings</string>
 
-    <string name="weather_key">99fc17cddbc67c7c5d3e673a8b2523b0n</string>
+    <string name="weather_key">2a022ff242c16a1142fd0094e90cab63</string>
     <string name="to_pin_current_location">to pin current location</string>
     <string name="Save_loc_to_db">Save Locations To Database</string>
     <string name="no_history">No History</string>
@@ -30,6 +30,9 @@
     <string name="longitude">Longitude</string>
     <string name="temperature">Temperature</string>
     <string name="weather">Weather</string>
+    <string name="settings_fragment_delete_database_option">Delete database</string>
+    <string name="settings_fragment_locations_database_label"><b>Locations Database</b></string>
+    <string name="settings_fragment_save_location_to_database_option">Save locations to database</string>
 
     <string name="developed_by_label"><b>Developed By</b></string>
     <string name="developer_name">Siddharth Pugalia</string>

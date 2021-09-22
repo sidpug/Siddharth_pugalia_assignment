@@ -1,8 +1,14 @@
 package com.sidpug.siddharth_pugalia;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -20,6 +26,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        checkPermission(Manifest.permission.ACCESS_FINE_LOCATION, 0);
+
+        checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION, 0);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+        }
+
         com.sidpug.siddharth_pugalia.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -30,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_map,R.id.nav_history, R.id.nav_settings, R.id.nav_about)
+                R.id.nav_map, R.id.nav_history, R.id.nav_settings, R.id.nav_about)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -52,4 +67,44 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 //    }
+
+
+    // Function to check and request permission.
+    public void checkPermission(String permission, int requestCode) {
+        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
+
+            // Requesting the permission
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{permission}, requestCode);
+        } else {
+            Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // This function is called when the user accepts or decline the permission.
+    // Request Code is used to check which permission called this function.
+    // This request code is provided when the user is prompt for permission.
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode,
+                permissions,
+                grantResults);
+
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(MainActivity.this, "Location Permission Granted", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Location Permission Denied", Toast.LENGTH_SHORT).show();
+        }
+
+        if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(MainActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
